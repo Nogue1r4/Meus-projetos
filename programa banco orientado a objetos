@@ -1,0 +1,35 @@
+print("Bem vindo ao Banco Mais Você! ")
+
+class ContaBancaria:
+   def __init__(self,nome_titular, saldo_inicial):
+    self.saldo=saldo_inicial
+    self.extrato = []
+    self.nome_titular=nome_titular
+
+   def exibir_saldo(self):
+    print (f"Saldo atual: R$ {self.saldo}") 
+
+   def depositar (self, valor_deposito):
+    self.saldo += valor_deposito 
+    self.extrato.append("+ R$ " + str(valor_deposito))
+    print (f"Valor R$ {valor_deposito} foi depositado! ")      
+    self.exibir_saldo()
+
+   def sacar (self,valor_saque):
+    if valor_saque > self.saldo:
+       print("Valor insuficiente! ")
+    else:
+        self.extrato.append("- R$ " + str(valor_saque))
+        self.saldo -= valor_saque
+        print(f'Valor R$ {valor_saque} foi retirado da sua conta! ')
+        self.exibir_saldo()
+
+   def exibir_extrato(self):
+    print("\nExtrato:")
+    for item in self.extrato:
+      print (item)
+      
+
+conta1 = ContaBancaria('Kayque', 120)
+conta1.depositar (60)
+conta1.sacar (50)
